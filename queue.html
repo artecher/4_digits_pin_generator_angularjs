@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>queue demo</title>
+    <style>
+        div {
+            margin: 3px;
+            width: 40px;
+            height: 80px;
+            position: absolute;
+            left: 0px;
+            top: 60px;
+            background: green;
+            display: none;
+            opacity:.1;
+        }
+        div.newcolor {
+            background: blue;
+        }
+        p {
+            color: red;
+        }
+    </style>
+    <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+</head>
+<body>
+
+<p>The queue length is: <span></span></p>
+<div></div>
+
+<script>
+    var div = $( "div" );
+
+    function runIt() {
+        div
+//                queue(function(){setTimeout(function(){div.css("display","block").dequeue()},1000)})
+//                .queue(function(){setTimeout(function(){div.css("opacity",1).dequeue()},1000)})
+//                .queue(function(){setTimeout(function(){div.css("display","none").dequeue()},1000)});
+                .show( "slow" )
+                .fadeTo("slow",1)
+//                .animate({ left: "+=200" }, 2000 )
+//                .slideToggle(  )
+//                .animate({ opacity: 1 }, 2000 )
+        .hide("slow");
+//                .slideToggle( "fast" )
+//                .animate({ left: "-=200" }, 1500 )
+//                .hide( "slow" )
+//                .show( 1200 )
+//                .slideUp( "normal", runIt );
+    }
+
+    function showIt() {
+        var n = div.queue( "fx" );
+        $( "span" ).text( n.length );
+        setTimeout( showIt, 100 );
+    }
+
+    runIt();
+    showIt();
+</script>
+
+</body>
+</html>

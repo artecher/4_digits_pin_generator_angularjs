@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="angular.js"></script>
+    <script>
+//        angular.module("expression",[])
+//                .controller("expression",function($scope) {
+//                    $scope.msg="welcome";
+//                });
+        var expressionCtrl = function($scope) {
+                    $scope.msg="welcome";
+            $scope.getName = function() {
+                return $scope.msg;
+            };
+                };
+var WorldCtrl = function ($scope) {
+    $scope.population = 7000;
+    $scope.countries = [
+        {name: 'France', population: 63.1},
+        {name: 'United Kingdom', population: 61.8},
+    ];
+};
+
+    </script>
+</head>
+<body ng-app ng-controller="expressionCtrl">
+<input ng-model="msg" type="text"/>
+{{getName()}}
+<ul ng-controller="WorldCtrl">
+    <li ng-repeat="country in countries">
+        {{country.name}} has population of {{country.population}}
+    </li>
+    <hr>
+    World's population: {{population}} millions
+</ul>
+</body>
+</html>
